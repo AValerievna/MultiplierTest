@@ -23,7 +23,9 @@ def test_main_page_multiply_displayed():
         pytest.param(33, 9, id='double_single'),
         pytest.param(2, 2, id='two_single'),
         pytest.param(0, 2, id='zero'),
-        pytest.param(0, 0, id='two_zero')
+        pytest.param(0, 0, id='two_zero'),
+        pytest.param(500, 20, id='500_value'),
+        pytest.param(3, 477, id='two_zero')
     ])
 def test_main_page_valid_multiply(first_digit, second_digit):
     main_page = get_opened_main_page()
@@ -41,7 +43,8 @@ def test_main_page_valid_multiply(first_digit, second_digit):
         pytest.param("", 94, id='empty_str'),
         pytest.param("some_str", 94, id='some_str'),
         pytest.param("0.2", 94, id='float'),
-        pytest.param(-2, 10, id='negative')
+        pytest.param(-2, 10, id='negative'),
+        pytest.param(666, 10, id='over_500')
     ])
 def test_main_page_multiply_invalid_params_first(first_digit, second_digit):
     main_page = get_opened_main_page()
@@ -58,7 +61,8 @@ def test_main_page_multiply_invalid_params_first(first_digit, second_digit):
         pytest.param(33, "", id='empty_str'),
         pytest.param(33, "some_str", id='some_str'),
         pytest.param(33, "4.11", id='float'),
-        pytest.param(44, -10, id='negative')
+        pytest.param(44, -10, id='negative'),
+        pytest.param(44, 777, id='over_500'),
     ])
 def test_main_page_multiply_invalid_params_second(first_digit, second_digit):
     main_page = get_opened_main_page()
@@ -76,6 +80,7 @@ def test_main_page_multiply_invalid_params_second(first_digit, second_digit):
         pytest.param("0.1", "some_str", id='some_str'),
         pytest.param("", "4.11", id='float'),
         pytest.param(-2, -10, id='two_negative'),
+        pytest.param(666, 666, id='over_500'),
     ])
 def test_main_page_multiply_invalid_params_both(first_digit, second_digit):
     main_page = get_opened_main_page()

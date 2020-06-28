@@ -12,7 +12,12 @@ ERROR_MSG = 'Something went wrong :('
                              pytest.param(0, 2, id='zero'),
                              pytest.param(0, 0, id='two_zero'),
                              pytest.param(-2, 10, id='negative'),
-                             pytest.param(-24, -60, id='two_negative')
+                             pytest.param(-24, -60, id='two_negative'),
+                             pytest.param(666, 6, id='first_over_500'),
+                             pytest.param(-2, 777, id='second_over_500'),
+                             pytest.param(555, 999, id='two_over_500'),
+                             pytest.param(500, 3, id='first_500'),
+                             pytest.param(-5, 444, id='second_less_500'),
                          ])
 def test_multiply_success(api_handler, first, second):
     response = api_handler.request_multiply(first=first, second=second)
